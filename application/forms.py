@@ -99,3 +99,26 @@ class UpdateAccountForm(FlaskForm):
 			user = Users.query.filter_by(email=email.data).first()
 			if user:
 				raise ValidationError('Email already in use')
+
+class 5eGeneratorForm(FlaskForm):
+	Player_name = StringField('Player Name',
+		validators=[
+			DataRequired(),
+			Length(min=2, max=30)
+		])
+	Char_name = StringField('Character Name',
+		validators=[
+			DataRequired(),
+			Length(min=1, max=30)
+		])
+	Level = IntegerField('Character Level',
+		Validators=[
+			DataRequired(),
+			Default(1)
+		])
+	Alignment = StringField('Alignment'
+		Validators=[
+			DataRequired(),
+		
+	Char gender
+	

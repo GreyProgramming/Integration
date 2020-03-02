@@ -138,6 +138,10 @@ def post():
 			print(form.errors)
 	return render_template('post.html', title = 'Post', form=form)
 
+@app.route('/dndchargen', methods=['GET', 'POST'])
+def generate():
+	
+
 @app.route("/<name>", methods=['GET', 'POST'])
 def user(name):
 	search = "%{}%".format(name)
