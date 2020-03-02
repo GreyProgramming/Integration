@@ -111,14 +111,16 @@ class 5eGeneratorForm(FlaskForm):
 			DataRequired(),
 			Length(min=1, max=30)
 		])
-	Level = IntegerField('Character Level',
+	Level = IntegerField('Level',
 		Validators=[
 			DataRequired(),
 			Default(1)
 		])
-	Alignment = StringField('Alignment'
+	Alignment = StringField('Alignment',
 		Validators=[
-			DataRequired(),
-		
-	Char gender
-	
+			DataRequired()
+		])
+	Char_Gender = Stringfield('Gender',
+		Validators=[
+			DataRequired()
+		])

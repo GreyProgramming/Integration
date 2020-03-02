@@ -81,10 +81,21 @@ class range(Enum):
 	"1 mile" = 36
 	"500 mile" = 37
 
+class Stats(Enum):
+	"STR" = 1
+	"DEX" = 2
+	"CON" = 3
+	"INT" = 4
+	"WIS" = 5
+	"CHA" = 6
+
 # Tables for the 5e stuff
 class classes(db.Model)
 	CL_ID = db.Column(sb.Integer(1), primary_key=True)
 	Name =  db.Column(db.String(50), nullable=False, unique=True)
+	Primary = db.Column(sb.String(5), Nullable = False, Enum(stats))
+	Secondary = db.Column(sb.String(5), Nullable = False, Enum(stats))
+	Dump = db.Column(sb.String(5), Nullable = False, Enum(stats))
 
 class Language(db.Model):
 	L_ID = db.Column(db.Integer, primary_key=True)
