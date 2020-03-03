@@ -140,7 +140,7 @@ def post():
 
 @app.route('/dndchargen', methods=['GET', 'POST'])
 def generate():
-	
+	form = 
 
 @app.route("/<name>", methods=['GET', 'POST'])
 def user(name):
