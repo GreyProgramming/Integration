@@ -5,6 +5,9 @@ from application import app, db, bcrypt
 from application.models import Posts, Users, Content
 from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm
 
+from application.stats import StatGen
+from application.namegen import CharNameFirst, CharNameLast
+
 
 @app.route('/')
 @app.route('/home')
@@ -138,9 +141,19 @@ def post():
 			print(form.errors)
 	return render_template('post.html', title = 'Post', form=form)
 
-@app.route('/dndchargen', methods=['GET', 'POST'])
+
+
+
+# 5e chargen stuff
+
+@app.route('/dndchargen/1', methods=['GET', 'POST'])
 def generate():
 	form = 
+
+
+
+
+# Current viewer for rolemodels - need a search bar
 
 @app.route("/<name>", methods=['GET', 'POST'])
 def user(name):

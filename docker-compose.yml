@@ -1,0 +1,9 @@
+version: '1'
+
+services:
+	app:
+		build: './application'
+	name:
+		build: './namegen'
+	stats:
+		build: './statsgen'
