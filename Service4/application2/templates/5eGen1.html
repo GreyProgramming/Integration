@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<div class="content">
+        <h1>Be Whoever You Want To Be.</h1>
+        <p>For a long time, D&D had a reputation for being a cis-het white man's game, but since the advent of 5e and online platforms such as <a href=https://roll20.net/>Roll20</a> and <a href=https://www.fantasygrounds.com/home/home.php>Fantasy Grounds</a>, the game's demographics have taken a huge shift towards a more diverse player base. more women, people of colour and queer players are being drawn to the game.</p>
+	<p>This is by no means an accident - in the recently released <a href=https://dnd.wizards.com/products/tabletop-games/rpg-products/waterdeep-dungeon-mad-mage><h3>Waterdeep: Dungeon of the Mad Mage</h3></a>, there is a questline where you return an NPC to her wife, an obvious LGBT storyline.</p>
+	<p>Further, roleplaying games allow you to explore ideas you have about yourself in a safe fantasy environment, so you can see how various aspects of the character interract and how you feel about them.</p> 
+	<p>To that end, I would like to present for you this 5e D&D generator:</p>
+</div>
+<div class="content">
+	<div class='form'>
+		<form method='Post' action=''>
+			{{ form.hidden_tag() }}
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-sm-3 col-md-6 col-lg-4">
+						<p>Player Name:</p>
+					</div>
+					{{ if current_user.is_authenticated: }}
+						<div class="col-sm-9 col-md-6 col-lg-8">
+							<p>{{ current_user.first_name }} {{current_user.last_name }}</p>
+						</div>
+					{{ else: }}
+						<div class="col-sm-9 col-md-6 col-lg-8">
+							<p>Test</p>
+						</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3 col-md-6 col-lg-4">
+						<p>Character Name:</p>
+					</div>
+					<div class="col-sm-9 col-md-6 col-lg-8">
+						<p>Test</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3 col-md-6 col-lg-4">
+						<p>Character Level:</p>
+					</div>
+					<div class="col-sm-9 col-md-6 col-lg-8">
+						<p>Test</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3 col-md-6 col-lg-4">
+						<p>Alignment:</p>
+					</div>
+					<div class="col-sm-9 col-md-6 col-lg-8">
+						<p>Test</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-3 col-md-6 col-lg-4">
+						<p>Gender:</p>
+					</div>
+					<div class="col-sm-9 col-md-6 col-lg-8">
+						<p>Test</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
