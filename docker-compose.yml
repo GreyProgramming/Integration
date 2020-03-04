@@ -2,8 +2,11 @@ version: '1'
 
 services:
 	app:
-		build: './application'
+		build: './Service1'
 	name:
-		build: './namegen'
+		build: './Service2'
 	stats:
-		build: './statsgen'
+		build: './Service3'
+	compiler:
+		build: './Service4'
+

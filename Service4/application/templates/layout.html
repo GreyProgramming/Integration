@@ -1,0 +1,38 @@
+<!Doctype html>
+<html>
+<head>
+	{% block head %}
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css" media="screen"/>
+	<title>Prideinyourself - {{ title }}</title>
+	{% endblock %}
+</head>
+
+<body class="body">
+	<div class="navbar" align="right">
+                <div class="important" align="left"><h1>{{ title }}</h1></div>
+		<a href="{{url_for('home') }}">-Home-</a>
+		<a href="{{url_for('about') }}">-About-</a>
+		{% if current_user.is_authenticated: %}
+			<a href="{{url_for('post') }}">-Post-</a>
+			<a href="{{url_for('account') }}">-Account-</a>
+	        	<a href="{{url_for('logout') }}">-Logout-</a>
+		{% else: %}
+	        	<a href="{{url_for('register') }}">-Register-</a>
+			<a href="{{url_for('login') }}">-Login-</a>
+		{% endif %}
+	</div>
+
+	<div id="content">
+		{% block body_content %}
+		{% endblock %}
+	</div>
+
+</body>
+
+<div class="footer">
+        {% block footer %}
+	&copy; Copyright 2020 by <a href="https://uk.linkedin.com/in/morgangreypm">@GreyProgramming</a>.
+	{% endblock %}
+</div>
+
+</html>
