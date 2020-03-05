@@ -167,10 +167,26 @@ def user(name):
 
 #5e stuff
 
-@app.route('/5e')
-def generate():
-	
-	whatever = "blHBLh!"										#Value from html
-	random_char_name=requests.post("<service-containername:port/endpoint>", whatever)		#calls s4
-	if 500, 
-	charname = 
+@app.route('/WhoYouWantToBe/1', methods=['GET', 'POST'])
+def generate()
+	form = 5eGeneratorForm()
+	if form.validate_on_submit:
+		char=5eGenerator(
+			Player_name = form.Player_name.data
+		)
+	db.session.add(5eGenerator)
+	db.session.commit
+
+	NameSeed = form.Player_name.data
+	RandomCharacterName=requests.post("http://flask-app_Service4_application_routes.py:5000>", NameSeed)
+
+
+
+
+###def generate():
+#	
+#	whatever = "blHBLh!"										#Value from html
+#	random_char_name=requests.post("<service-containername:port/endpoint>", whatever)		#calls s4
+#	if 500, 
+#	charname = 
+
