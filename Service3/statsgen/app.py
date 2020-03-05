@@ -9,3 +9,10 @@ def stat_gen()
 		i+=1
 
 	return stats
+
+@app.route('/stats')
+	def rand_stats()
+		username=request.data.decode('UTC-8')
+		list=stats(username)
+		return(list)
+

@@ -164,3 +164,13 @@ def user(name):
 
 	else:
 		return redirect(url_for('view', id=RM.c_id))
+
+#5e stuff
+
+@app.route('/5e')
+def generate():
+	
+	whatever = "blHBLh!"										#Value from html
+	random_char_name=requests.post("<service-containername:port/endpoint>", whatever)		#calls s4
+	if 500, 
+	charname = 

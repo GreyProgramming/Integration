@@ -100,6 +100,8 @@ class UpdateAccountForm(FlaskForm):
 			if user:
 				raise ValidationError('Email already in use')
 
+
+
 class 5eGeneratorForm(FlaskForm):
 	Player_name = StringField('Player Name',
 		validators=[
@@ -124,3 +126,37 @@ class 5eGeneratorForm(FlaskForm):
 		Validators=[
 			DataRequired()
 		])
+	Race = Stringfield('Race',
+		Validators=[
+			DataRequired()
+		])
+	Class = StringField('Class',
+		Validators=[
+			DataRequired()
+		])
+
+class 5eStats(FlaskForm)
+	STR = IntegerField('Strength',
+		Validators=[
+			DataRequired()
+		]
+        DEX = IntegerField('Strength',
+                Validators=[
+                        DataRequired()
+                ]
+        CON = IntegerField('Strength',
+                Validators=[
+                        DataRequired()
+                ]
+        INT = IntegerField('Strength',
+                Validators=[
+                        DataRequired()
+                ]
+        WIS = IntegerField('Strength',
+                Validators=[
+                        DataRequired()
+                ]
+        CHA = IntegerField('Strength',
+                Validators=[
+                        DataRequired()
+                ]

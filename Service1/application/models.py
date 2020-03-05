@@ -90,6 +90,7 @@ from enum import Enum
 #	"CHA" = 6
 #
 # Tables for the 5e stuff
+#
 #class classes(db.Model)
 #	CL_ID = db.Column(sb.Integer(1), primary_key=True)
 #	Name =  db.Column(db.String(50), nullable=False, unique=True)
@@ -109,13 +110,13 @@ from enum import Enum
 #	speed = db.Column(db.string(10), nullable=False, Enum(speed))
 #	Language1 = db.Column(db.Integer, db.ForeignKey('language.l_id'), nullable=False)
 #	Language2 = db.Column(db.Integer, db.ForeignKey('language.l_id'), nullable=True)
-#	STRmod = db.Column(db.Integer(), default=0)
-#	DEXmod = db.Column(db.Integer(), default=0)
-#	CONmod = db.Column(db.Integer(), default=0)
-#	INTmod = db.Column(db.Integer(), default=0)
-#	WISmod = db.Column(db.Integer(), default=0)
-#	CHAmod = db.Column(db.Integer(), default=0)
-#	FREEmod = db.Column(db.Integer(), default=0)
+#	STRmod = db.Column(db.Integer(2), default=0)
+#	DEXmod = db.Column(db.Integer(2), default=0)
+#	CONmod = db.Column(db.Integer(2), default=0)
+#	INTmod = db.Column(db.Integer(2), default=0)
+#	WISmod = db.Column(db.Integer(2), default=0)
+#	CHAmod = db.Column(db.Integer(2), default=0)
+#	FREEmod = db.Column(db.Integer(2), default=0)
 #	Notes = db.Column(db.String(1000))
 #	Source = db.Column(sb.String(5), Nullable = False, Enum(source))
 #
@@ -132,7 +133,7 @@ from enum import Enum
 #	Components = db.Column(db.String(50), nullable=False)
 #	Description = db.Column(db.String(500), nullable=False)
 #	Source = db.Column(sb.String(5), Nullable = False, Enum(source))
-
+#
 #class Feats(db.Model):
 #	F_ID = db.Column(db.Integer, primary_key=True)
 #	Name = db.Column(db.String(50), nullable=False)
@@ -187,6 +188,22 @@ from enum import Enum
 #	Health = db.Column(db.String(50), nullable=False)
 #	Cost = db.Column(db.Float(15), nullable=False)
 #	Weight db.Column(db.Float(10))
+
+class 5eGenerator(db.Model):
+	P_ID = db.column(db.Integer,primary_key=True)
+	P_Name = db.column(db.String(100))
+	C_Name = db.column(db.String(100))
+	Lv = db.Column(db.Integer(2))
+	Align = db.Column(db.String(50))
+	Gender = db.Column(db.String(50))
+	Race = db.Column(db.String(50))
+	Class = db.Column(db.String(50))
+	STR = db.Column(db.Integer(2))
+	DEX = db.Column(db.Integer(2))
+	CON = db.Column(db.Integer(2))
+	INT = db.Column(db.Integer(2))
+	WIS = db.Column(db.Integer(2))
+	CHA = db.Column(db.Integer(2))
 
 #UserFunctionality
 

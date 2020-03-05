@@ -1,3 +1,4 @@
+from flask import Flask
 from random import random
 
 First={
@@ -36,3 +37,9 @@ def CharNameLast():
                 Char_Last.append(char2)
         return Char_Last
 
+@app.route('/namegen')
+	def random_name()
+		username=request.data.decode('UTC-8')
+		first_name=CharNameFirst(username)
+		last_name=CharNameLast(username)
+		return str(first_name+last_name)
