@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, IntegerField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
 
@@ -102,7 +102,7 @@ class UpdateAccountForm(FlaskForm):
 
 
 
-class 5eGeneratorForm(FlaskForm):
+class GeneratorForm(FlaskForm):
 	Player_name = StringField('Player Name',
 		validators=[
 			DataRequired(),
@@ -115,18 +115,17 @@ class 5eGeneratorForm(FlaskForm):
 		])
 	Level = IntegerField('Level',
 		Validators=[
-			DataRequired(),
-			Default(1)
+			DataRequired()
 		])
 	Alignment = StringField('Alignment',
 		Validators=[
 			DataRequired()
 		])
-	Char_Gender = Stringfield('Gender',
+	Char_Gender = StringField('Gender',
 		Validators=[
 			DataRequired()
 		])
-	Race = Stringfield('Race',
+	Race = StringField('Race',
 		Validators=[
 			DataRequired()
 		])
@@ -135,28 +134,28 @@ class 5eGeneratorForm(FlaskForm):
 			DataRequired()
 		])
 
-class 5eStats(FlaskForm)
+class StatsForm(FlaskForm):
 	STR = IntegerField('Strength',
 		Validators=[
 			DataRequired()
-		]
-        DEX = IntegerField('Strength',
-                Validators=[
-                        DataRequired()
-                ]
-        CON = IntegerField('Strength',
-                Validators=[
-                        DataRequired()
-                ]
-        INT = IntegerField('Strength',
-                Validators=[
-                        DataRequired()
-                ]
-        WIS = IntegerField('Strength',
-                Validators=[
-                        DataRequired()
-                ]
-        CHA = IntegerField('Strength',
-                Validators=[
-                        DataRequired()
-                ]
+		])
+	DEX = IntegerField('Dexterity',
+		Validators=[
+			DataRequired()
+		])
+	CON = IntegerField('Constitution',
+		Validators=[
+			DataRequired()
+		])
+	INT = IntegerField('Intelligence',
+		Validators=[
+			DataRequired()
+		])
+	WIS = IntegerField('Wisdom',
+		Validators=[
+			DataRequired()
+		])
+	CHA = IntegerField('Charisma',
+		Validators=[
+			DataRequired()
+		])

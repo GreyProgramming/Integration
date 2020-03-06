@@ -1,9 +1,9 @@
-from flask import render_template, redirect, url_for, request
+#from flask import render_template, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
 
 from application import app, db, bcrypt
-from application.models import Posts, Users, Content
-from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm
+from application.models import Posts, Users, Content, Generator
+from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm, GeneratorForm, StatsForm
 
 
 @app.route('/')
@@ -168,25 +168,21 @@ def user(name):
 #5e stuff
 
 @app.route('/WhoYouWantToBe/1', methods=['GET', 'POST'])
-def generate()
-	form = 5eGeneratorForm()
+def generate():
+	form = GeneratorForm()
 	if form.validate_on_submit:
-		char=5eGenerator(
-			Player_name = form.Player_name.data
+		NameSeed = form.Player_name.data
+		GenData=requests.post("http://flask-app_Service4_1:5000/", NameSeed)
+		A, B, C, D, E, F = itemgetter(0, 1, 2, 3, 4, 5)(GenData['stats'])
+		char=Generator(
+			Player_name = form.Player_name.data,
+			Character_Name = GenData['name'],
+			STR = A,
+			DEX = B,
+			CON = C,
+			INT = D,
+			WIS = E,
+			CHA = F
 		)
-	db.session.add(5eGenerator)
+	db.session.add(Generator)
 	db.session.commit
-
-	NameSeed = form.Player_name.data
-	RandomCharacterName=requests.post("http://flask-app_Service4_application_routes.py:5000>", NameSeed)
-
-
-
-
-###def generate():
-#	
-#	whatever = "blHBLh!"										#Value from html
-#	random_char_name=requests.post("<service-containername:port/endpoint>", whatever)		#calls s4
-#	if 500, 
-#	charname = 
-

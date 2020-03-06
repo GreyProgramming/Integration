@@ -1,38 +1,35 @@
-version: '1'
+version: '3.7'
 
 services:
-	Service 1:
-		build:
-			context: ./Service1
-			docker-file: dockerfile
+ service1:
+  build:
+   context: ./Service1
+   dockerfile: ../Dockerfile
+  ports:
+  - target: 5000
+    published: 5000
+    protocol: tcp
+  environment:
+  - DATABASE_URI='mysql+pymysql://root:1Che4Mis0Try1!@35.189.121.243/flaskapp'
+  - SECRET_KEY'65bc5e0bec735eb03c6b60979390ebd1b85de8c404396aa7b20b6f18aeb5ef6c315c2725419a9600baee015fb0f5e7d38bf559c322a5e0a3e274816e381af1707c43ad836fb8ed85fe7bdf179557911c188682ee7de62edc66580e42395aa86a84f76454cd528df1de1804297613b7fe0baab4c15b448ad0ef227b3c17e2fffd63a4c16f31e62040ab5597d1829e2f56e5000cc0b76b1501b1d74dc23a98b2bc49625f22ff4f55427fd6628ffa816437c773ca294ed8e12e942010cd7bb47c99a9ce0853902f5e6e2c173eec85a622df48874c6a2a547de64e7e71f4df90ca605ef8aff6844ec38edcee384c4e113cf822c0be384dc3d25b0712cbfb9c847f'
 
-	Service 2A:
-		build:
-			context: ./Service2/namegen
-			docker-file: dockerfile
+ service2:
+  build:
+   context: ./Service2/namegen
+   dockerfile: ../../Dockerfile
+  ports:
+  - target: 5000
 
-	Service 3A:
-		build:
-			context: ./Service3/statsgen
-			docker-file: dockerfile
+ service3:
+  build:
+   context: ./Service3/statsgen
+   dockerfile: ../../Dockerfile
+  ports:
+  - target: 5000
 
-	Service 4A:
-		build:
-			context: ./Service4/application
-			docker-file: dockerfile
-
-	Service 2B:
-		build:
-			context: ./Service2/namegenB   
-			docker-file: dockerfile
-
-	Service 3B:
-		build:
-			context: ./Service3/statsgenB
-			docker-file: dockerfile
-
-	Service 4B:
-		build:
-			context: ./Service4/application2       
-			docker-file: dockerfile
-
+ service4:
+  build:
+   context: ./Service4/application
+   dockerfile: ../../Dockerfile
+  ports:
+  - target: 5000

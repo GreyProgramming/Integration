@@ -1,6 +1,8 @@
 from flask import Flask
 from random import random
 
+app = Flask(__name__)
+
 First={
 1:"ing", 2:"ment", 3:"ger", 4:"light", 5:"age", 6:"er", 7:"or", 8:"low", 9:"ob", 10:"ba", 11:"a", 12:"tions", 13:"ni", 14:"of", 15:"but", 16:"ly", 17:"ble", 18:"par", 19:"pos", 20:"cit", 21:"ed", 22:"der", 23:"son", 24:"tain", 25:"cle",
 26:"i", 27:"ma", 28:"tle", 29:"den", 30:"co", 31:"es", 32:"na", 33:"day", 34:"ings", 35:"cov", 36:"re", 37:"si", 38:"ny", 39:"mag", 40:"da", 41:"tion", 42:"un", 43:"pen", 44:"ments", 45:"dif", 46:"in", 47:"at", 48:"pre", 49:"set", 50:"ence",
@@ -21,8 +23,6 @@ Last={
 91:"university", 92:"writing", 93:"article", 94:"department", 95:"difference", 96:"goal", 97:"news", 98:"audience", 99:"fishing", 100:"growth"
 }
 
-
-
 def CharNameFirst():
         Char_First=""
         for i in range(3):
@@ -38,8 +38,11 @@ def CharNameLast():
         return Char_Last
 
 @app.route('/namegen')
-	def random_name()
-		username=request.data.decode('UTC-8')
-		first_name=CharNameFirst(username)
-		last_name=CharNameLast(username)
-		return str(first_name+last_name)
+def random_name():
+	username=request.data.decode('UTC-8')
+	first_name=CharNameFirst(username)
+	last_name=CharNameLast(username)
+	return str(first_name+last_name)
+
+if __name__ == "__main__":
+        app.run(debug=True, host='0.0.0.0')
