@@ -1,5 +1,5 @@
-from flask import Flask
-from random import random
+from flask import Flask, request
+from random import choice
 
 app = Flask(__name__)
 
@@ -24,25 +24,24 @@ Last={
 }
 
 def CharNameFirst():
-        Char_First=""
-        for i in range(3):
-                char1=random.choice(list(First.keys()))
-                Char_First.append(char1)
-        return Char_First
+	Char_First=""
+	for i in range(3):
+		char1=choice(First)
+		Char_First=Char_First+char1
+	return Char_First
 
 def CharNameLast():
-        Char_Last=""
-        for i in range(2):
-                char2=random.choice(list(Last.keys()))
-                Char_Last.append(char2)
-        return Char_Last
+	Char_Last=""
+	for i in range(2):
+		char2=choice(Last)
+		Char_Last=Char_Last+char2
+	return Char_Last
 
-@app.route('/namegen')
+@app.route('/')
 def random_name():
-	username=request.data.decode('UTC-8')
-	first_name=CharNameFirst(username)
-	last_name=CharNameLast(username)
-	return str(first_name+last_name)
+	first_name=CharNameFirst()
+	last_name=CharNameLast()
+	return str(first_name+" "+last_name)
 
 if __name__ == "__main__":
         app.run(debug=True, host='0.0.0.0')

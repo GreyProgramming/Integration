@@ -1,9 +1,13 @@
-#from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request
 from flask_login import login_user, current_user, logout_user, login_required
 
 from application import app, db, bcrypt
 from application.models import Posts, Users, Content, Generator
-from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm, GeneratorForm, StatsForm
+from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm, GeneratorForm
+
+import os
+
+app.config['SECRET_KEY']=str(os.getenv('MY_SECRET_KEY'))
 
 
 @app.route('/')
@@ -11,10 +15,6 @@ from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccou
 def home():
 	postData = Posts.query.all()
 	return render_template('home.html', title='Home', posts=reversed(postData))
-
-@app.route('/about')
-def about():
-	return render_template('about.html', title='About')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -167,22 +167,29 @@ def user(name):
 
 #5e stuff
 
-@app.route('/WhoYouWantToBe/1', methods=['GET', 'POST'])
+@app.route('/dnd5e/1', methods=['GET', 'POST'])
 def generate():
 	form = GeneratorForm()
-	if form.validate_on_submit:
+	if form.validate_on_submit():
 		NameSeed = form.Player_name.data
 		GenData=requests.post("http://flask-app_Service4_1:5000/", NameSeed)
-		A, B, C, D, E, F = itemgetter(0, 1, 2, 3, 4, 5)(GenData['stats'])
-		char=Generator(
+		statA, statB, statC, statD, statE, statF = (GenData['stats'])
+		character=Generator(
 			Player_name = form.Player_name.data,
 			Character_Name = GenData['name'],
-			STR = A,
-			DEX = B,
-			CON = C,
-			INT = D,
-			WIS = E,
-			CHA = F
+			STR = statA,
+			DEX = statB,
+			CON = statC,
+			INT = statD,
+			WIS = statE,
+			CHA = statF
 		)
-	db.session.add(Generator)
-	db.session.commit
+		db.session.add(character)
+		db.session.commit()
+	return render_template('5eGen1.html', form=form, current_user=current_user)
+
+@app.route('/dnd5e/2', methods=['GET', 'POST'])
+def character():
+	form = GeneratorForm()
+	P_ID=id
+	return render_template('5eGen2.html', form=form)

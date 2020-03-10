@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<div class="content">
+        <h2><p>Randomly generated stats for {{ Player_name }} below:</p></h2>
+
+	<div class='form'>
+		<form method='Post' action=''>
+			{{ form.hidden_tag() }}
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.Char_name.label }} - {{ form.Char_name }}</div>
+				</div>
+				{% if form.Char_name.errors %}
+					<div class='error'>
+						{% for error in form.Char_name.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.Level.label }} - {{ form.Level }}</div>
+				</div>
+				{% if form.Level.errors %}
+					<div class='error'>
+						{% for error in form.Level.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.Alignment.label }} - {{ form.Alignment }}</div>
+				</div>
+				{% if form.Alignment.errors %}
+					<div class='error'>
+						{% for error in form.Alignment.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.Char_Gender.label }} - {{ form.Char_Gender }}</div>
+				</div>
+				{% if form.Char_Gender.errors %}
+					<div class='error'>
+						{% for error in form.Char_Gender.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.Race.label }} - {{ form.Race }}</div>
+				</div>
+				{% if form.Race.errors %}
+					<div class='error'>
+						{% for error in form.Race.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+                        </div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.Class.label }} - {{ form.Class }}</div>
+				</div>
+				{% if form.Class.errors %}
+					<div class='error'>
+						{% for error in form.Class.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.STR.label }} - {{ form.STR }}</div>
+				</div>
+				{% if form.STR.errors %}
+					<div class='error'>
+						{% for error in form.STR.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.DEX.label }} - {{ form.DEX }}</div>
+				</div>
+				{% if form.DEX.errors %}
+					<div class='error'>
+						{% for error in form.DEX.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.CON.label }} - {{ form.CON }}</div>
+				</div>
+				{% if form.CON.errors %}
+					<div class='error'>
+						{% for error in form.CON.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.INT.label }} - {{ form.INT }}</div>
+				</div>
+				{% if form.INT.errors %}
+					<div class='error'>
+						{% for error in form.INT.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.WIS.label }} - {{ form.WIS }}</div>
+				</div>
+				{% if form.WIS.errors %}
+					<div class='error'>
+						{% for error in form.WIS.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+
+			<div class='form_group'>
+				<div class="row">
+					<div class="col-md-2">{{ form.CHA.label }} - {{ form.CHA }}</div>
+				</div>
+				{% if form.CHA.errors %}
+					<div class='error'>
+						{% for error in form.CHA.errors %}
+							<span>{{ error }}</span>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+			<br>
+
+                        <div class='form_group'>
+                                {{ form.submit }}
+                        </div>
+                </form>
+{% endblock %}

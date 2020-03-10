@@ -1,9 +1,16 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<div class="content">
+<div class="important">
         <p>Welcome to this web app! Pride in yourself is about being able to find historical role models who were LGBTQ+.</p>
-	<p>-This is of course viewed through a modern perspective - historical context is often important, and of course all history is subjective to interpretation.-</p> 
+	<p>-This is of course viewed through a modern perspective: historical context is often important, and of course all history is subjective to interpretation.-</p>
+	<div class="content">
+	<p>Over the past 70 years since stonewall, LGBTQ+ rights and representation have come a long way, but the statistics still show that we have a <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3662085/">higher rate of suicide attempts</a> than other groups.</p>
+	<p>One of the oft-cited reasons for this is that we just aren't provided the examples of historical role models in the same way that cisgender, heterosexual people are - both through the erasure of actual LGBTQ aspects of historical people and through the pushing of the narrative wherein the cis/heteronormative assumptions are seen as the default.</p>
+	<p>This is by no means the only reason that has been put forward, young transgender people rarely have the language to describe the way and reasons for how and why they feel different from other people, and so the lack of language to describe the feelings that they have and are experiencing actively disadvantages their ability to process emotionally.</p>
+	<p>As a result, I wanted to collate stories about historical LGBTQ+ role models, so that there is a central repository for people to look up examples throughout history, and be reminded that we are not alone.</p>
+	</div>
 </div>
+<br>
 <div class="content">
 	<p><h2>Recent suggestions by users:</h2></p>
 	{% for post in posts %}

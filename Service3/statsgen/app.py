@@ -1,5 +1,5 @@
-from flask import Flask
-from random import random
+from flask import Flask, jsonify
+import random
 
 app = Flask(__name__)
 
@@ -14,11 +14,15 @@ def stat_gen():
 
 	return stats
 
-@app.route('/stats')
+@app.route('/')
 def rand_stats():
-	username=request.data.decode('UTC-8')
-	list=stats(username)
-	return(list)
+	sA,sB,sC,sD,sE,sF=stat_gen()
+	return jsonify(STR = sA,
+		DEX = sB,
+		CON = sC,
+		INT = sD,
+		WIS = sE,
+		CHA = sF)
 
 
 if __name__ == "__main__":

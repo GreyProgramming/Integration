@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, jsonify, request
+import requests
 
 app = Flask(__name__)
 
@@ -15,13 +16,19 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def generate():
+		#Service 4 receives player name from Service 1
+	app.logger.info(request.data.decode("utf-8"))
+		#Pings service 2 to receive randomised character name
+	NameRand=requests.get("http://flask-app_Service2_1:5000/").text
+		#Pings service 3 to get randomised character stats
+	Stats=requests.get("http://flask-app_Service3_1:5000/").json()
 
-	Number=ord(NameSeed)
-	NameRand=requests.post("http://flask-app_Service2_1:5000/", Number)
+		#Inputs these items into SQL table
 
-	Stats=requests.post("http://flask-app_Service3_1:5000/", Number)
+		#returns primary key for that field to service 1
 
-	return {"name": NameRand, "stats": Stats}
+	return jsonify(name = NameRand,
+		stats = Stats)
 
 
 if __name__ == "__main__":

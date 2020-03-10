@@ -102,6 +102,9 @@ class UpdateAccountForm(FlaskForm):
 
 
 
+
+
+
 class GeneratorForm(FlaskForm):
 	Player_name = StringField('Player Name',
 		validators=[
@@ -114,48 +117,46 @@ class GeneratorForm(FlaskForm):
 			Length(min=1, max=30)
 		])
 	Level = IntegerField('Level',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	Alignment = StringField('Alignment',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	Char_Gender = StringField('Gender',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	Race = StringField('Race',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	Class = StringField('Class',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
-
-class StatsForm(FlaskForm):
 	STR = IntegerField('Strength',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	DEX = IntegerField('Dexterity',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	CON = IntegerField('Constitution',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	INT = IntegerField('Intelligence',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	WIS = IntegerField('Wisdom',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
 	CHA = IntegerField('Charisma',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
