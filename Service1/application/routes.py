@@ -172,11 +172,11 @@ def generate():
 	form = GeneratorForm()
 	if form.validate_on_submit():
 		NameSeed = form.Player_name.data
-		GenData=requests.post("http://flask-app_Service4_1:5000/", NameSeed)
-		return redirect(url_for('character', id=id))
+		ID=requests.post("http://flask-app_Service4_1:5000/", NameSeed)
+		return redirect(url_for('character', id=ID))
 	else:
 		print(form.errors)
-	return render_template('5eGen1.html', form=form, current_user=current_user)
+	return render_template('5eGen1.html', form=form)
 
 @app.route('/charactergen/<id>', methods=['GET', 'POST'])
 def character(id):

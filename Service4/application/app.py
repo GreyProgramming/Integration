@@ -10,7 +10,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def generate():
-	form = GeneratorForm()
 		#Service 4 receives player name from Service 1
 	app.logger.info(request.data.decode("utf-8"))
 	Player=request.data.decode("utf-8")
@@ -44,7 +43,7 @@ def generate():
 
 		#returns primary key for that field to service 1
 
-	return id=Generator.P_ID
+	return str(Generator.P_ID)
 
 
 if __name__ == "__main__":
