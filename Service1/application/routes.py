@@ -173,23 +173,13 @@ def generate():
 	if form.validate_on_submit():
 		NameSeed = form.Player_name.data
 		GenData=requests.post("http://flask-app_Service4_1:5000/", NameSeed)
-		statA, statB, statC, statD, statE, statF = (GenData['stats'])
-		character=Generator(
-			Player_name = form.Player_name.data,
-			Character_Name = GenData['name'],
-			STR = statA,
-			DEX = statB,
-			CON = statC,
-			INT = statD,
-			WIS = statE,
-			CHA = statF
-		)
-		db.session.add(character)
-		db.session.commit()
+		return redirect(url_for('character', id=id))
+	else:
+		print(form.errors)
 	return render_template('5eGen1.html', form=form, current_user=current_user)
 
-@app.route('/dnd5e/2', methods=['GET', 'POST'])
-def character():
+@app.route('/charactergen/<id>', methods=['GET', 'POST'])
+def character(id):
+	RM = Generator.query.filter_by(P_ID=id).first()
 	form = GeneratorForm()
-	P_ID=id
 	return render_template('5eGen2.html', form=form)
