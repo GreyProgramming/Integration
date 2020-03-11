@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request
 import requests
 from Compiler.models import Generator
+from Compiler import db, app
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 # 5e chargen stuff
 
@@ -12,7 +13,6 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def generate():
 		#Service 4 receives player name from Service 1
-	app.logger.info(request.data.decode("utf-8"))
 	Player=request.data.decode("utf-8")
 	app.logger.info(Player)
 		#Pings service 2 to receive randomised character name
@@ -37,13 +37,13 @@ def generate():
 		WIS = Stats["WIS"],
 		CHA = Stats["CHA"]
 	)
-	app.logger.info(generated)
+
 	db.session.add(generated)
 	db.session.commit()
-
+	db.session.refresh(generated)
 		#returns primary key for that field to service 1
-	app.logger.info(Generator.P_ID)
-	return str(Generator.P_ID)
+	app.logger.info(generated.P_ID)
+	return str(generated.P_ID)
 
 
 if __name__ == "__main__":
