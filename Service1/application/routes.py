@@ -3,9 +3,10 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 from application import app, db, bcrypt
 from application.models import Posts, Users, Content, Generator
-from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm, GeneratorForm
+from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm, GeneratorForm, PlayerForm
 
 import os
+import requests
 
 app.config['SECRET_KEY']=str(os.getenv('MY_SECRET_KEY'))
 
@@ -167,12 +168,13 @@ def user(name):
 
 #5e stuff
 
-@app.route('/dnd5e/1', methods=['GET', 'POST'])
+@app.route('/dnd5e', methods=['GET', 'POST'])
 def generate():
-	form = GeneratorForm()
+	form = PlayerForm()
 	if form.validate_on_submit():
 		NameSeed = form.Player_name.data
-		ID=requests.post("http://flask-app_Service4_1:5000/", NameSeed)
+		ID=requests.post("http://Service4:5000/", NameSeed).text
+		app.logger.info(ID)
 		return redirect(url_for('character', id=ID))
 	else:
 		print(form.errors)

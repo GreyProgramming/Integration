@@ -100,9 +100,13 @@ class UpdateAccountForm(FlaskForm):
 			if user:
 				raise ValidationError('Email already in use')
 
-
-
-
+class PlayerForm(FlaskForm):
+	Player_name = StringField('Player Name',
+		validators=[
+			DataRequired(),
+			Length(min=2, max=30)
+		])
+	submit = SubmitField('Generate')
 
 
 class GeneratorForm(FlaskForm):
@@ -160,3 +164,4 @@ class GeneratorForm(FlaskForm):
 		validators=[
 			DataRequired()
 		])
+	submit = SubmitField('Save')
