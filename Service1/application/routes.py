@@ -64,7 +64,7 @@ def account():
 		current_user.email = form.email.data
 		db.session.commit()
 		return redirect(url_for('account'))
-	elif request.method == 'GET':								#This is the stuff to look at tomorrow
+	elif request.method == 'GET':								#This is the stuff to look at tomorrow for the chargen stuff
 		form.first_name.data = current_user.first_name
 		form.last_name.data = current_user.last_name
 		form.email.data = current_user.email
@@ -182,6 +182,53 @@ def generate():
 
 @app.route('/charactergen/<id>', methods=['GET', 'POST'])
 def character(id):
-	RM = Generator.query.filter_by(P_ID=id).first()
+	Character = Generator.query.filter_by(P_ID=id).first()
 	form = GeneratorForm()
-	return render_template('5eGen2.html', form=form)
+	if form.validate_on_submit():
+		Character.P_name = form.Player_name.data
+		Character.C_name = form.Char_name.data
+		Character.Lv = form.Level.data
+		Character.Align = form.Alignment.data
+		Character.Gender = form.Char_Gender.data
+		Character.Race = form.Race.data
+		Character.Class = form.Class.data
+		Character.STR = form.STR.data
+		Character.DEX = form.DEX.data
+		Character.CON = form.CON.data
+		Character.INT = form.INT.data
+		Character.WIS = form.WIS.data
+		Character.CHA = form.CHA.data
+	elif request.method == 'GET':
+		form.Player_name.data = Character.P_Name
+		form.Char_name.data = Character.C_Name
+		form.Level.data = Character.Lv
+		form.Alignment.data = Character.Align
+		form.Char_Gender.data = Character.Gender
+		form.Race.data = Character.Race
+		form.Class.data = Character.Class
+		form.STR.data = Character.STR
+		form.DEX.data = Character.DEX
+		form.CON.data = Character.CON
+		form.INT.data = Character.INT
+		form.WIS.data = Character.WIS
+		form.CHA.data = Character.CHA
+	return render_template('5eGen2.html', title="Character", form=form)
+
+
+
+#@app.route('/account', methods=['GET', 'POST'])
+#@login_required
+#def account():
+#        form = UpdateAccountForm()
+#        posts = Posts.query.filter_by(user_id=current_user.id).all()
+#        if form.validate_on_submit():
+#                current_user.first_name = form.first_name.data
+#                current_user.last_name = form.last_name.data
+#                current_user.email = form.email.data
+#                db.session.commit()
+#                return redirect(url_for('account'))
+#        elif request.method == 'GET':                                                           #This is the stuff to look at tomorrow for the chargen stuff
+#                form.first_name.data = current_user.first_name
+#                form.last_name.data = current_user.last_name
+#                form.email.data = current_user.email
+#        return render_template('account.html', title='Account', form=form, posts=posts)
