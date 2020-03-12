@@ -1,12 +1,38 @@
-version: '1'
+version: '3.7'
 
 services:
-	app:
-		build: './Service1'
-	name:
-		build: './Service2'
-	stats:
-		build: './Service3'
-	compiler:
-		build: './Service4'
+ service1:
+  build:
+   context: ./Service1
+   dockerfile: ../Dockerfile
+  ports:
+  - target: 5000
+    published: 5000
+    protocol: tcp
+  environment:
+  - DATABASE_URI=${DATABASE_URI}
+  - SECRET_KEY=${MY_SECRET_KEY}
 
+ service2:
+  build:
+   context: ./Service2/namegen
+   dockerfile: ../../Dockerfile
+  ports:
+  - target: 5000
+
+ service3:
+  build:
+   context: ./Service3/statsgen
+   dockerfile: ../../Dockerfile
+  ports:
+  - target: 5000
+
+ service4:
+  build:
+   context: ./Service4/application
+   dockerfile: ../../Dockerfile
+  ports:
+  - target: 5000
+  environment:
+  - DATABASE_URI=${DATABASE_URI}
+  - SECRET_KEY=${MY_SECRET_KEY}

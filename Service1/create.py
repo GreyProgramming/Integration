@@ -1,5 +1,4 @@
 from application import db
-from application.models import Posts, Users, Content
+from application.models import Posts, Users, Content, Generator
 
-db.drop_all()
 db.create_all()

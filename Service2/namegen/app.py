@@ -1,4 +1,7 @@
-from random import random
+from flask import Flask, request
+from random import choice
+
+app = Flask(__name__)
 
 First={
 1:"ing", 2:"ment", 3:"ger", 4:"light", 5:"age", 6:"er", 7:"or", 8:"low", 9:"ob", 10:"ba", 11:"a", 12:"tions", 13:"ni", 14:"of", 15:"but", 16:"ly", 17:"ble", 18:"par", 19:"pos", 20:"cit", 21:"ed", 22:"der", 23:"son", 24:"tain", 25:"cle",
@@ -20,19 +23,25 @@ Last={
 91:"university", 92:"writing", 93:"article", 94:"department", 95:"difference", 96:"goal", 97:"news", 98:"audience", 99:"fishing", 100:"growth"
 }
 
-
-
 def CharNameFirst():
-        Char_First=""
-        for i in range(3):
-                char1=random.choice(list(First.keys()))
-                Char_First.append(char1)
-        return Char_First
+	Char_First=""
+	for i in range(3):
+		char1=choice(First)
+		Char_First=Char_First+char1
+	return Char_First
 
 def CharNameLast():
-        Char_Last=""
-        for i in range(2):
-                char2=random.choice(list(Last.keys()))
-                Char_Last.append(char2)
-        return Char_Last
+	Char_Last=""
+	for i in range(2):
+		char2=choice(Last)
+		Char_Last=Char_Last+char2
+	return Char_Last
 
+@app.route('/')
+def random_name():
+	first_name=CharNameFirst()
+	last_name=CharNameLast()
+	return str(first_name+" "+last_name)
+
+if __name__ == "__main__":
+        app.run(debug=True, host='0.0.0.0')

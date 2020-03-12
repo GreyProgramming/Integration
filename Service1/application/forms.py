@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_login import current_user
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, IntegerField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
 
@@ -100,7 +100,16 @@ class UpdateAccountForm(FlaskForm):
 			if user:
 				raise ValidationError('Email already in use')
 
-class 5eGeneratorForm(FlaskForm):
+class PlayerForm(FlaskForm):
+	Player_name = StringField('Player Name',
+		validators=[
+			DataRequired(),
+			Length(min=2, max=30)
+		])
+	submit = SubmitField('Generate')
+
+
+class GeneratorForm(FlaskForm):
 	Player_name = StringField('Player Name',
 		validators=[
 			DataRequired(),
@@ -112,15 +121,47 @@ class 5eGeneratorForm(FlaskForm):
 			Length(min=1, max=30)
 		])
 	Level = IntegerField('Level',
-		Validators=[
-			DataRequired(),
-			Default(1)
+		validators=[
+			DataRequired()
 		])
 	Alignment = StringField('Alignment',
-		Validators=[
+		validators=[
 			DataRequired()
 		])
-	Char_Gender = Stringfield('Gender',
-		Validators=[
+	Char_Gender = StringField('Gender',
+		validators=[
 			DataRequired()
 		])
+	Race = StringField('Race',
+		validators=[
+			DataRequired()
+		])
+	Class = StringField('Class',
+		validators=[
+			DataRequired()
+		])
+	STR = IntegerField('Strength',
+		validators=[
+			DataRequired()
+		])
+	DEX = IntegerField('Dexterity',
+		validators=[
+			DataRequired()
+		])
+	CON = IntegerField('Constitution',
+		validators=[
+			DataRequired()
+		])
+	INT = IntegerField('Intelligence',
+		validators=[
+			DataRequired()
+		])
+	WIS = IntegerField('Wisdom',
+		validators=[
+			DataRequired()
+		])
+	CHA = IntegerField('Charisma',
+		validators=[
+			DataRequired()
+		])
+	submit = SubmitField('Save')

@@ -2,3 +2,5 @@ flask-venv
 **/__pycache__
 **/*.save*
 htmlcov
+docker-compose.yml
+

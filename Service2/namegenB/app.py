@@ -84,3 +84,11 @@ def CharNameLast():
 		char2=random.choice(list(Last.keys()))
 		Char_Last.append(char2)
         return Char_Last
+
+@app.route('/namegen')
+	def random_name()
+		username=request.data.decode('UTC-8')
+		first_name=CharNameFirst(username)
+		last_name=CharNameLast(username)
+		return str(first_name+last_name)
+
